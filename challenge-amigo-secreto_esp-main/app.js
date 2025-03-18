@@ -1,24 +1,56 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
+// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema. ¡Buena suerte!
 
 //Variables
 const inputAmigo = document.getElementById('amigo');
-const listaAmigos = [];
-const amigoSorteado = document.getElementById('amigo-sorteado');
+// En el los requerimientos figura "Let amigos" pero el concepto de "lista" se me hizo más claro
+let listaAmigos = [];
+const ulListaAmigos = document.getElementById('listaAmigos');
+const ulResultado = document.getElementById('resultado');
 
 //Funciones
 function agregarAmigo() {
-    if (inputAmigo.value === '') {
-        alert('Debes ingresar un nombre');
-    } else {
+    if (inputAmigo.value == '') {
+        alert('Agrega un nombre');
+        return;
+    }
         listaAmigos.push(inputAmigo.value);
         inputAmigo.value = '';
-        console.log(listaAmigos);
-    }
+        mostrarAmigos();
+
 }
-agregarAmigo();
+
+function mostrarAmigos() {
+    ulListaAmigos.innerHTML = '';
+    listaAmigos.forEach((amigo, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${amigo}`;
+        ulListaAmigos.appendChild(li);
+    });
+}
 
 function sortearAmigo() {
-    const amigoSorteado = listaAmigos[Math.floor(Math.random() * listaAmigos.length)];
-    console.log(amigoSorteado);
-    alert(`Tu amigo secreto es: ${amigoSorteado}`);
+    if (listaAmigos.length === 0) {
+        alert('No hay amigos en la lista para sortear.');
+        return;
     }
+    const indiceSorteado = Math.floor(Math.random() * listaAmigos.length);
+    const amigoSorteado = listaAmigos[indiceSorteado];
+    mostrarResultado(amigoSorteado);
+}
+
+function mostrarResultado(amigoSorteado) {
+    ulResultado.innerHTML = '';
+    const li = document.createElement('li');
+    li.textContent = `Amigo sorteado: ${amigoSorteado}`;
+    ulResultado.appendChild(li);
+}
+
+function reiniciar() {
+    listaAmigos.length = 0;
+    ulListaAmigos.innerHTML = '';
+    ulResultado.innerHTML = '';
+}   
+
+
+
+
