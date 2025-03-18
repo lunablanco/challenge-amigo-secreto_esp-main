@@ -51,6 +51,6 @@ function reiniciar() {
     ulResultado.innerHTML = '';
 }   
 
-
+//Se utilizó más documentación para hacer los cambios necesarios en el código
 
 
