@@ -1,4 +1,4 @@
- Amigo Secreto
+## Amigo Secreto
 
 Un proyecto para organizar un juego de "Amigo Secreto" en línea. Permite a los usuarios ingresar nombres y sortear un amigo secreto de manera aleatoria.
 
